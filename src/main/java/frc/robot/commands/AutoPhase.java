@@ -9,13 +9,10 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
-import edu.wpi.first.wpilibj.Timer;
-
 
 public class AutoPhase extends Command {
 
   private boolean End = false;
-  public Timer timer;
 
   public AutoPhase() {
     // Use requires() here to declare subsystem dependencies
@@ -27,13 +24,12 @@ public class AutoPhase extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    timer.start();
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    if (timer.get() < 3){
+    if (frc.robot.Robot.time() < 3){
       Robot.drivetrain.driveArcade(0.1,0);
     }
     else{
@@ -46,6 +42,7 @@ public class AutoPhase extends Command {
   @Override
   protected boolean isFinished() {
     if(End){
+      frc.robot.Robot.timerStop();
       return true;
     }
     return false;
