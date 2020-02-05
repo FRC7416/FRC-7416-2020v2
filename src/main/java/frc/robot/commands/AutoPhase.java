@@ -14,8 +14,8 @@ import edu.wpi.first.wpilibj.Timer;
 
 public class AutoPhase extends Command {
 
-  private double time;
   private boolean End = false;
+  public Timer timer;
 
   public AutoPhase() {
     // Use requires() here to declare subsystem dependencies
@@ -27,13 +27,13 @@ public class AutoPhase extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+    timer.start();
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-  time = Timer.getMatchTime();
-    if (time-Robot.StartTime < 15){
+    if (timer.get() < 3){
       Robot.drivetrain.driveArcade(0.1,0);
     }
     else{
