@@ -15,6 +15,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.AutoPhase;
 import frc.robot.subsystems.*;
 import edu.wpi.first.wpilibj.Timer;
+import io.github.pseudoresonance.pixy2api.*;
+import io.github.pseudoresonance.pixy2api.Pixy2CCC.Block;
+import java.util.ArrayList;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -31,6 +34,11 @@ public class Robot extends TimedRobot {
   public static OI m_oi;
   public static Timer timer = new Timer();
 
+  private Pixy2 pixycam;
+  boolean isCamera = false ;
+  int state=- 1 ;
+ 
+
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
 
@@ -44,6 +52,7 @@ public class Robot extends TimedRobot {
     m_chooser.setDefaultOption("Default Auto", new AutoPhase());
     // chooser.addOption("My Auto", new MyAutoCommand());
     SmartDashboard.putData("Auto mode", m_chooser);
+    pixycam = Pixy2.createInstance(Pixy2.LinkType.SPI);
   }
 
   /**
@@ -119,6 +128,26 @@ public class Robot extends TimedRobot {
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
     }
+    if (!isCamera)
+    state = pixycam.init( 1 ); // if no camera present, try to initialize
+    isCamera = state>= 0 ;
+    SmartDashboard.putBoolean( "Camera" , isCamera); //publish if we are connected
+    pixycam.getCCC().getBlocks( false , 255 , 255 ); //run getBlocks with arguments to have the camera
+    //acquire target data
+    ArrayList <Block> blocks = pixycam.getCCC().getBlocks(); //assign the data toan ArrayList for convinience
+    if (blocks.size() > 0 )
+    {
+    double xcoord = blocks.get( 0 ).getX(); // x position of the largesttarget
+    double ycoord = blocks.get( 0 ).getY(); // y position of the largesttarget
+    String data = blocks.get( 0 ).toString(); // string containing target info
+    SmartDashboard.putBoolean( "present" , true ); // show there is a target present
+    SmartDashboard.putNumber( "Xccord" ,xcoord);
+    SmartDashboard.putNumber( "Ycoord" , ycoord);
+    SmartDashboard.putString( "Data" , data );
+    }
+    else
+    SmartDashboard.putBoolean( "present" , false );
+    SmartDashboard.putNumber( "size" , blocks.size()); 
   }
 
   /**

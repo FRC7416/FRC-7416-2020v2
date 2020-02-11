@@ -47,7 +47,6 @@ public class AutoPhase extends Command {
     }
     return false;
   }
-
   // Called once after isFinished returns true
   @Override
   protected void end() {
