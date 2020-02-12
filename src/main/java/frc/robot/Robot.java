@@ -127,9 +127,18 @@ public class Robot extends TimedRobot {
     // this line or comment it out.
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
+      }
     }
+    
+  /**
+   * This function is called periodically during operator control.
+   */
+  int cc= 0;
+  @Override
+  public void teleopPeriodic() {
+    Scheduler.getInstance().run();
     if (!isCamera)
-    state = pixycam.init( 1 ); // if no camera present, try to initialize
+      state = pixycam.init( 1 ); // if no camera present, try to initialize
     isCamera = state>= 0 ;
     SmartDashboard.putBoolean( "Camera" , isCamera); //publish if we are connected
     pixycam.getCCC().getBlocks( false , 255 , 255 ); //run getBlocks with arguments to have the camera
@@ -137,25 +146,17 @@ public class Robot extends TimedRobot {
     ArrayList <Block> blocks = pixycam.getCCC().getBlocks(); //assign the data toan ArrayList for convinience
     if (blocks.size() > 0 )
     {
-    double xcoord = blocks.get( 0 ).getX(); // x position of the largesttarget
-    double ycoord = blocks.get( 0 ).getY(); // y position of the largesttarget
-    String data = blocks.get( 0 ).toString(); // string containing target info
-    SmartDashboard.putBoolean( "present" , true ); // show there is a target present
-    SmartDashboard.putNumber( "Xccord" ,xcoord);
-    SmartDashboard.putNumber( "Ycoord" , ycoord);
-    SmartDashboard.putString( "Data" , data );
+      double xcoord = blocks.get( 0 ).getX(); // x position of the largesttarget
+      double ycoord = blocks.get( 0 ).getY(); // y position of the largesttarget
+      String data = blocks.get( 0 ).toString(); // string containing target info
+      SmartDashboard.putBoolean( "present" , true ); // show there is a target present
+      SmartDashboard.putNumber( "Xccord" ,xcoord);
+      SmartDashboard.putNumber( "Ycoord" , ycoord);
+      SmartDashboard.putString( "Data" , data );
     }
     else
-    SmartDashboard.putBoolean( "present" , false );
+      SmartDashboard.putBoolean( "present" , false );
     SmartDashboard.putNumber( "size" , blocks.size()); 
-  }
-
-  /**
-   * This function is called periodically during operator control.
-   */
-  @Override
-  public void teleopPeriodic() {
-    Scheduler.getInstance().run();
   }
 
   /**
