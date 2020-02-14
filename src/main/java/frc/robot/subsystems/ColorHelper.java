@@ -22,12 +22,9 @@ public class ColorHelper extends Subsystem {
   public static Pixy2 pixycam= Pixy2.createInstance(Pixy2.LinkType.SPI);
   
   public ArrayList<Block> getBlock() {
-    pixycam.getCCC().getBlocks( false , 15, 2);
+    pixycam.getCCC().getBlocks(false, 15, 3);
     ArrayList<Block> blocks = pixycam.getCCC().getBlocks(); 
     return blocks;
-  }
-
-  public void Resrt(){
   }
 
   @Override

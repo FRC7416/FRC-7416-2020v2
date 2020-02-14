@@ -6,10 +6,15 @@
 /*----------------------------------------------------------------------------*/
 
 package frc.robot.commands;
+
 import frc.robot.Robot;
 import frc.robot.subsystems.ColorHelper;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import io.github.pseudoresonance.pixy2api.Pixy2CCC.Block;
+import java.util.ArrayList;
+
+import edu.wpi.first.wpilibj.Timer;
 
 
 public class ColorCensor extends Command {
@@ -21,26 +26,30 @@ public class ColorCensor extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-   
+        
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-     ColorHelper.pixycam.init( 1 );
-    if(Robot.colorHelper.getBlock().size()>0){
-        double xcoord = Robot.colorHelper.getBlock().get( 0 ).getX(); // x position 
-        double ycoord = Robot.colorHelper.getBlock().get( 0 ).getY(); // y position 
-        String data = Robot.colorHelper.getBlock().get( 0 ).toString(); // string containing target
+    ColorHelper.pixycam.init( 1 );
+      if(Robot.colorHelper.getBlock().size()!=0){
         SmartDashboard.putBoolean( "present" , true );
+        ArrayList <Block> blockOne = Robot.colorHelper.getBlock();
+        ColorHelper.pixycam.close();
+        SmartDashboard.putNumber("size",Robot.colorHelper.getBlock().size());
+        double xcoord =blockOne.get(0).getX(); // x position 
+        double ycoord = blockOne.get(0).getY(); // y position 
+        int color = blockOne.get(0).getSignature(); // string containing target
         SmartDashboard.putNumber( "Xccord" ,xcoord);
         SmartDashboard.putNumber( "Ycoord" , ycoord);
-        SmartDashboard.putString( "Data" , data );
-
+        SmartDashboard.putNumber( "Color" , color);
     }
-      else
+      else{
         SmartDashboard.putBoolean( "present" , false );
-
+        ColorHelper.pixycam.close();
+      }
+        
     }
 
   
