@@ -33,7 +33,10 @@ public class ColorCensor extends Command {
   @Override
   protected void execute() {
     ColorHelper.pixycam.init( 1 );
-      if(Robot.colorHelper.getBlock().size()!=0){
+      if(Robot.colorHelper.getBlock().size()==0){
+        SmartDashboard.putBoolean( "present" , false );
+    }
+      else{
         SmartDashboard.putBoolean( "present" , true );
         ArrayList <Block> blockOne = Robot.colorHelper.getBlock();
         ColorHelper.pixycam.close();
@@ -44,12 +47,8 @@ public class ColorCensor extends Command {
         SmartDashboard.putNumber( "Xccord" ,xcoord);
         SmartDashboard.putNumber( "Ycoord" , ycoord);
         SmartDashboard.putNumber( "Color" , color);
-    }
-      else{
-        SmartDashboard.putBoolean( "present" , false );
-        ColorHelper.pixycam.close();
       }
-        
+      Timer.delay(0.5);
     }
 
   
