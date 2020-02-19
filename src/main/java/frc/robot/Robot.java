@@ -30,12 +30,8 @@ public class Robot extends TimedRobot {
   public static ButtonHelper buttonHelper = new ButtonHelper();
   public static ColorHelper colorHelper = new ColorHelper();
   public static OI m_oi;
+  // timer set for autunomous
   public static Timer timer = new Timer();
-
-  
-  boolean isCamera = false ;
-  int state=- 1 ;
- 
 
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -47,6 +43,7 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
     m_oi = new OI();
+    // set the AutoPhase command as the desired autonomous method we want to use
     m_chooser.setDefaultOption("Default Auto", new AutoPhase());
     // chooser.addOption("My Auto", new MyAutoCommand());
     SmartDashboard.putData("Auto mode", m_chooser);
@@ -95,6 +92,7 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousInit() {
     m_autonomousCommand = m_chooser.getSelected();
+    // start and reset the timer each time autonumous is inited
     timer.reset();
     timer.start();
     /*
@@ -144,6 +142,7 @@ public class Robot extends TimedRobot {
   public void testPeriodic() {
   }
 
+  // getter for timer should be useless with the timestop() function, but for now I used it in autophase
   public static double time() {
     return timer.get();
   }

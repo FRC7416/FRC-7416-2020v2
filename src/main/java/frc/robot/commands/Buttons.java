@@ -21,6 +21,7 @@ public class Buttons extends Command {
   }
 
   // Called just before this Command runs the first time
+  // count for the ball in the tube, start with 0
   @Override
   protected void initialize() {
       Robot.m_oi.count=0;

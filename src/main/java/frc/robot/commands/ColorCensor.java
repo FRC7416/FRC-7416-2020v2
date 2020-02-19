@@ -32,23 +32,26 @@ public class ColorCensor extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+    //start the ask the pixycamera to start working
     ColorHelper.pixycam.init( 1 );
+    // if the there is at least 1 object on the camera, get the color and position of the largest obejct every half second
       if(Robot.colorHelper.getBlock().size()==0){
         SmartDashboard.putBoolean( "present" , false );
     }
       else{
         SmartDashboard.putBoolean( "present" , true );
         ArrayList <Block> blockOne = Robot.colorHelper.getBlock();
-        ColorHelper.pixycam.close();
         SmartDashboard.putNumber("size",Robot.colorHelper.getBlock().size());
         double xcoord =blockOne.get(0).getX(); // x position 
         double ycoord = blockOne.get(0).getY(); // y position 
-        int color = blockOne.get(0).getSignature(); // string containing target
+        int color = blockOne.get(0).getSignature(); // ccolor, 1 is red, 2 is yellow, 3 is green, 4 is blue, it sees most color as green other than the mentioned ones
         SmartDashboard.putNumber( "Xccord" ,xcoord);
         SmartDashboard.putNumber( "Ycoord" , ycoord);
         SmartDashboard.putNumber( "Color" , color);
       }
       Timer.delay(0.5);
+
+      ColorHelper.pixycam.close();
     }
 
   
