@@ -18,11 +18,10 @@ import frc.robot.commands.Buttons;
  * Add your docs here.
  */
 public class ButtonHelper extends Subsystem {
- 
+  // init the button on analog port with given number, add to here if needed
   public AnalogInput button1Trigger = new AnalogInput(3);
 
-
-
+  // while the button is not pressed, avg voltage is extremely small
   double init= button1Trigger.getAverageVoltage();
   boolean pressed = false;
   //gets and returns button states

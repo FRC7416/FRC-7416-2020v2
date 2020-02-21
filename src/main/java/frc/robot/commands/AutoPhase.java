@@ -27,6 +27,7 @@ public class AutoPhase extends Command {
   }
 
   // Called repeatedly when this Command is scheduled to run
+  // Use timer to divide time for different instruction during autonomous
   @Override
   protected void execute() {
     if (frc.robot.Robot.time() < 3){

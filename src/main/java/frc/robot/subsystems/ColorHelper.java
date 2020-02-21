@@ -17,10 +17,9 @@ import frc.robot.commands.ColorCensor;
  * Add your docs here.
  */
 public class ColorHelper extends Subsystem {
-  // Put methods for controlling this subsystem
-  // here. Call these from Commands.
+  // initiate the pixy with the SPI port
   public static Pixy2 pixycam= Pixy2.createInstance(Pixy2.LinkType.SPI);
-  
+  // the function return the blocks it sees as a list 
   public ArrayList<Block> getBlock() {
     pixycam.getCCC().getBlocks(false, 15, 3);
     ArrayList<Block> blocks = pixycam.getCCC().getBlocks(); 
