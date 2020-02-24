@@ -33,10 +33,10 @@ public class DriveArcade extends Command {
 
     //Here we control the multipler for the speed, comparable to "gears" in a car.
     final double multiplier = Robot.m_oi.getMultiplier(
-      Robot.m_oi.getButtonPressed(Robot.m_oi.rightFStick, FStickMap.BUTTON2),
-      Robot.m_oi.getButtonPressed(Robot.m_oi.rightFStick, FStickMap.BUTTON3), 
-      Robot.m_oi.getButtonPressed(Robot.m_oi.rightFStick, FStickMap.BUTTON4),
-      Robot.m_oi.getButtonPressed(Robot.m_oi.rightFStick, FStickMap.BUTTON5));
+      Robot.m_oi.getButtonPressed(Robot.m_oi.leftFStick, FStickMap.TRIGGER),
+      Robot.m_oi.getButtonPressed(Robot.m_oi.leftFStick, FStickMap.B1), 
+      Robot.m_oi.getButtonPressed(Robot.m_oi.leftFStick, FStickMap.B2),
+      Robot.m_oi.getButtonPressed(Robot.m_oi.leftFStick, FStickMap.B3));
     
     //This should place the information onto smartdashboard, but it is not currently working for unknown reasons.
     SmartDashboard.putNumber("Speed Multiplier", multiplier);

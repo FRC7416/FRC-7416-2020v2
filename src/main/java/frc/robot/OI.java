@@ -12,8 +12,6 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
 //import edu.wpi.first.wpilibj.PWM;
-import edu.wpi.first.wpilibj.buttons.Button;
-import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -45,39 +43,28 @@ public class OI {
   // button.whenReleased(new ExampleCommand());
 
   /**
-     * The right flight stick, a Thrustmaster T-16000.
+     * The right flight stick, a Logitech Extreme 3d Pro. 
      */
     public Joystick rightFStick = new Joystick(0);
 
     /**
-     * The left flight stick, a Logitech Extreme 3d Pro. 
+     * The left flight stick, another Logitech Extreme 3d Pro. 
      */
     public Joystick leftFStick = new Joystick(1);
 
     //"default" deadband values
     //was set to driver preference for 2019 season. If controlers change or driver doesn't like the feel
-    //feel free to tmess around, but don't set to zero or errors may occur. Changing this value effects the entire sensitivity curve
+    //feel free to mess around, but don't set to zero or errors may occur. Changing this value effects the entire sensitivity curve
     //You can pass this or any value into getAxis
     public final double RIGHT_FSTICK_DEADBAND = 0.05;
     public final double LEFT_FSTICK_DEADBAND = 0.001;
-
-    
     /**The multiplier for the Drivetrain. Speed is multiplied by this double before being passed into the drive methods
      * Is initialized at the lowest speed, .25, the speed used during Sandstorm
     */
     public double multiplier = .25;
 
-
-
-
-    public Button leftFStickButton2 = new JoystickButton(leftFStick, 2);
-    public Button leftFStickButton3 = new JoystickButton(leftFStick, 3);
-   
     // not sure if this is how I make a button
     public int count= 0;
-   
-
-   
     /** 
     *  This value tests whether a value from a joystick is within it's deadband. 
     *  @param value the axis value being tested
@@ -141,6 +128,9 @@ public class OI {
         return fStick.getRawButton(map);
     }
 
+    public boolean getButtonReleased(Joystick fstick, int map){
+        return fstick.getRawButtonReleased(map);
+    }
     
     /**
      * This method is used to read buttons from Joysticks

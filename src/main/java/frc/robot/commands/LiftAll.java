@@ -6,6 +6,7 @@
 /*----------------------------------------------------------------------------*/
 
 package frc.robot.commands;
+import frc.robot.FStickMap;
 import frc.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -25,7 +26,7 @@ public class LiftAll extends Command {
   @Override
   protected void execute() {
     ///Robot.lift.driveLift(Robot.m_oi.interpretHatState(Robot.m_oi.rightFStick, 0,180,0.2,-.2));//don't change speeds It'll mess up dirver
-    if(Robot.m_oi.getButtonPressed(Robot.m_oi.rightFStick,1)){
+    if(Robot.m_oi.getButtonReleased(Robot.m_oi.rightFStick,FStickMap.B1)){
       if(Robot.lift.Running == false){
         Robot.lift.Running = true;
       }
@@ -33,10 +34,16 @@ public class LiftAll extends Command {
         Robot.lift.Running = false;
       }
     }
-
     if(Robot.lift.Running){
-      Robot.lift.intake();
+      Robot.lift.intake(1.0);
     }
+    else{
+      Robot.lift.intake(0.0);
+    }
+    if(Robot.m_oi.getButtonPressed(Robot.m_oi.rightFStick,FStickMap.B2))
+      Robot.lift.LiftUp();
+    else if(Robot.m_oi.getButtonPressed(Robot.m_oi.rightFStick,FStickMap.B3))
+      Robot.lift.LiftDown();
   }
 
   // Make this return true when this Command no longer needs to run execute()

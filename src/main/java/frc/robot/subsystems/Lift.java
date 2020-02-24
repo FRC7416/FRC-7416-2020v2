@@ -30,8 +30,16 @@ public class Lift extends Subsystem {
     liftMotor.set(speed);
   }
 
-  public void intake(){
-    IntakeMotor.set(1);
+  public void LiftUp(){
+    liftMotor.set(0.6);
+  }
+
+  public void LiftDown(){
+    liftMotor.set(-0.6);
+  }
+
+  public void intake(double speed){
+    IntakeMotor.set(speed);
   }
   @Override
   public void initDefaultCommand() {
