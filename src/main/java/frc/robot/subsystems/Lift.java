@@ -19,6 +19,7 @@ public class Lift extends Subsystem {
   // here. Call these from Commands.
   private VictorSP liftMotor = new VictorSP(RobotMap.LIFT_MOTOR);
   private VictorSP IntakeMotor = new VictorSP(RobotMap.INTAKE_MOTOR);
+  public boolean Running = false;
 
   public Lift(){
     liftMotor.setInverted(true);

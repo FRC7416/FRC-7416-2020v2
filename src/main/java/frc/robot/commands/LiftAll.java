@@ -26,6 +26,15 @@ public class LiftAll extends Command {
   protected void execute() {
     Robot.lift.driveLift(Robot.m_oi.interpretHatState(Robot.m_oi.rightFStick, 0,180,0.2,-.2));//don't change speeds It'll mess up dirver
     if(Robot.m_oi.getButtonPressed(Robot.m_oi.rightFStick,1)){
+      if(Robot.lift.Running == false){
+        Robot.lift.Running = true;
+      }
+      else{
+        Robot.lift.Running = false;
+      }
+    }
+
+    if(Robot.lift.Running){
       Robot.lift.intake();
     }
   }
