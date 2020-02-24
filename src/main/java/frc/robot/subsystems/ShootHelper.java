@@ -6,36 +6,28 @@
 /*----------------------------------------------------------------------------*/
 
 package frc.robot.subsystems;
-import frc.robot.RobotMap;
-import frc.robot.commands.LiftAll;
-import edu.wpi.first.wpilibj.VictorSP;
-import edu.wpi.first.wpilibj.command.Subsystem;
 
+import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.VictorSP;
+import frc.robot.RobotMap;
+import frc.robot.commands.*;
 /**
  * Add your docs here.
  */
-public class Lift extends Subsystem {
+public class ShootHelper extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-  private VictorSP liftMotor = new VictorSP(RobotMap.LIFT_MOTOR);
-  private VictorSP IntakeMotor = new VictorSP(RobotMap.INTAKE_MOTOR);
-  public boolean Running = false;
+  private VictorSP ShootMotor = new VictorSP(RobotMap.SHOOT_MOTOR);
 
-  public Lift(){
-    liftMotor.setInverted(true);
-    IntakeMotor.setInverted(false);
+  public ShootHelper(){
+    ShootMotor.setInverted(false);
   }
-  public void driveLift(double speed)
-  {
-    liftMotor.set(speed);
-  }
-
-  public void intake(){
-    IntakeMotor.set(1);
+  public void shooting(){
+    ShootMotor.set(0.8);
   }
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
-    setDefaultCommand(new LiftAll());
+     setDefaultCommand(new Shooter());
   }
 }

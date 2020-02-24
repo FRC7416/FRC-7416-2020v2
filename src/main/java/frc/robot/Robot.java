@@ -29,6 +29,7 @@ public class Robot extends TimedRobot {
   public static Lift lift = new Lift();
   public static ButtonHelper buttonHelper = new ButtonHelper();
   public static ColorHelper colorHelper = new ColorHelper();
+  public static ShootHelper shootHelper = new ShootHelper();
   public static OI m_oi;
   // timer set for autunomous
   public static Timer timer = new Timer();

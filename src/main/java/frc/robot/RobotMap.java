@@ -29,4 +29,6 @@ public class RobotMap {
   public static final int RIGHT_MAIN_MOTOR = 1;
   public static final int LIFT_MOTOR = 3;
   public static final int INTAKE_MOTOR = 4;
+  public static final int SHOOT_MOTOR = 5;
+
 }

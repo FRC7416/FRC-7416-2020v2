@@ -46,7 +46,7 @@ public class DriveArcade extends Command {
     //multiplier: the speed multiplier, .25, .5, .75, or 1
     //Robot.oi.reverse 1 or -1
     Robot.drivetrain.driveArcade(
-      multiplier * Robot.m_oi.getAxis(Robot.m_oi.rightFStick, FStickMap.YAXIS, Robot.m_oi.RIGHT_FSTICK_DEADBAND),
+      multiplier * Robot.m_oi.getAxis(Robot.m_oi.leftFStick, FStickMap.YAXIS, Robot.m_oi.RIGHT_FSTICK_DEADBAND),
       multiplier * Robot.m_oi.getAxis(Robot.m_oi.leftFStick, FStickMap.XAXIS, Robot.m_oi.LEFT_FSTICK_DEADBAND));
     
   }
