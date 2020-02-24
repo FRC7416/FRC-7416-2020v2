@@ -125,6 +125,9 @@ public class Robot extends TimedRobot {
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
       }
+    if (timer.get()!=0){
+      timerStop();
+    }
     }
     
   /**

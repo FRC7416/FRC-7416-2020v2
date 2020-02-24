@@ -43,7 +43,6 @@ public class AutoPhase extends Command {
   @Override
   protected boolean isFinished() {
     if(End){
-      frc.robot.Robot.timerStop();
       return true;
     }
     return false;
