@@ -45,12 +45,12 @@ public class OI {
   /**
      * The right flight stick, a Logitech Extreme 3d Pro. 
      */
-    public Joystick rightFStick = new Joystick(0);
+    public Joystick rightFStick = new Joystick(1);
 
     /**
      * The left flight stick, another Logitech Extreme 3d Pro. 
      */
-    public Joystick leftFStick = new Joystick(1);
+    public Joystick leftFStick = new Joystick(0);
 
     //"default" deadband values
     //was set to driver preference for 2019 season. If controlers change or driver doesn't like the feel

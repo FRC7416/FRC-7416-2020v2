@@ -19,15 +19,15 @@ public class Shooter extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    if(Robot.m_oi.getTState(Robot.m_oi.rightFStick)){
-      Robot.shootHelper.shooting();
-    }
-
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+    if(Robot.m_oi.getTState(Robot.m_oi.rightFStick)){
+      Robot.shootHelper.shooting();
+    }
+
   }
 
   // Make this return true when this Command no longer needs to run execute()
