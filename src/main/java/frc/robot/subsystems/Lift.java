@@ -11,7 +11,6 @@ import frc.robot.RobotMap;
 import frc.robot.commands.LiftAll;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * Add your docs here.
@@ -22,6 +21,7 @@ public class Lift extends Subsystem {
   private VictorSP liftMotor = new VictorSP(RobotMap.LIFT_MOTOR);
   private VictorSP IntakeMotor = new VictorSP(RobotMap.INTAKE_MOTOR);
   private VictorSP ShootMotor = new VictorSP(RobotMap.SHOOT_MOTOR);
+  private VictorSP WitchMotor = new VictorSP(RobotMap.WITCH_MOTOR);
   public boolean Running = false;
 
   public Lift(){
@@ -40,15 +40,19 @@ public class Lift extends Subsystem {
   }
   public void intake(double speed){
     IntakeMotor.set(speed);
-    SmartDashboard.putBoolean("Running", Running);
     
   }
   public void shooting(double speed){
     ShootMotor.set(speed);
+  }
+
+  public void Witch(double speed){
+    WitchMotor.set(speed);
   }
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     setDefaultCommand(new LiftAll());
   }
+
 }

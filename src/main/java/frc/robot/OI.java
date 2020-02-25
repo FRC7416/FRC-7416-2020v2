@@ -141,7 +141,10 @@ public class OI {
         return fStick.getTrigger();
     
     }
-
+    public double getShootSpeed(Joystick fstick, double deadband){
+        double SliderSpeed= getAxis(fstick, FStickMap.SLIDER, deadband);
+            return (SliderSpeed+1)*0.8*(-1)/2;
+        }
     /**This method is used to change the speed multiplier for the robot.
      * <p>If more than one button is being held down, the highest one will override the rest.
      * @param speedOneButton the boolean value of the button being tested for the lowest speed, .25

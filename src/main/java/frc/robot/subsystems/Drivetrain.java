@@ -14,6 +14,9 @@ public class Drivetrain extends Subsystem {
   //If you switch to talon, since they have encoders, you will have to switch to the talon class here. I am unsure what implications that has on the rest of the code
   private VictorSP leftMain = new VictorSP(RobotMap.LEFT_MAIN_MOTOR);
   private VictorSP rightMain = new VictorSP(RobotMap.RIGHT_MAIN_MOTOR);
+
+  public int YDchange = 1;
+  public int XDchange = -1;
   
 
   public Drivetrain (){

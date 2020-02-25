@@ -40,14 +40,17 @@ public class DriveArcade extends Command {
     
     //This should place the information onto smartdashboard, but it is not currently working for unknown reasons.
     SmartDashboard.putNumber("Speed Multiplier", multiplier);
-   
+    if(Robot.m_oi.getButtonReleased(Robot.m_oi.leftFStick,FStickMap.B10)){
+      Robot.drivetrain.YDchange *= -1;
+      Robot.drivetrain.XDchange *= -1;
+    }
 
     //Main drive function. This takes the axis inputs from our joysticks, and then mulitplies it by:
     //multiplier: the speed multiplier, .25, .5, .75, or 1
     //Robot.oi.reverse 1 or -1
     Robot.drivetrain.driveArcade(
-      multiplier * Robot.m_oi.getAxis(Robot.m_oi.leftFStick, FStickMap.YAXIS, Robot.m_oi.RIGHT_FSTICK_DEADBAND),
-      multiplier * Robot.m_oi.getAxis(Robot.m_oi.rightFStick, FStickMap.XAXIS, Robot.m_oi.LEFT_FSTICK_DEADBAND));
+      Robot.drivetrain.YDchange*multiplier * Robot.m_oi.getAxis(Robot.m_oi.leftFStick, FStickMap.YAXIS, Robot.m_oi.RIGHT_FSTICK_DEADBAND),
+      Robot.drivetrain.XDchange*multiplier * Robot.m_oi.getAxis(Robot.m_oi.rightFStick, FStickMap.XAXIS, Robot.m_oi.LEFT_FSTICK_DEADBAND));
     
   }
 

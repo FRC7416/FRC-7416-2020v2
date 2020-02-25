@@ -25,34 +25,38 @@ public class LiftAll extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    
-    ///Robot.lift.driveLift(Robot.m_oi.interpretHatState(Robot.m_oi.rightFStick, 0,180,0.2,-.2));//don't change speeds It'll mess up dirver
-    if(Robot.m_oi.getButtonReleased(Robot.m_oi.rightFStick,FStickMap.B1)) {
-      if(Robot.lift.Running == false){
+
+    /// Robot.lift.driveLift(Robot.m_oi.interpretHatState(Robot.m_oi.rightFStick,
+    /// 0,180,0.2,-.2));//don't change speeds It'll mess up dirver
+    if (Robot.m_oi.getButtonReleased(Robot.m_oi.rightFStick, FStickMap.B1)) {
+      if (Robot.lift.Running == false) {
         Robot.lift.Running = true;
-      }
-      else{
+      } else {
         Robot.lift.Running = false;
       }
     }
-    if(Robot.lift.Running){
-      Robot.lift.intake(0.5);
-    }
-    else{
+    if (Robot.lift.Running) {
+      Robot.lift.intake(Robot.m_oi.getAxis(Robot.m_oi.leftFStick, FStickMap.SLIDER, Robot.m_oi.LEFT_FSTICK_DEADBAND));
+    } else {
       Robot.lift.intake(0);
     }
-    if(Robot.m_oi.getButtonPressed(Robot.m_oi.rightFStick,FStickMap.B2))
+    if (Robot.m_oi.getButtonPressed(Robot.m_oi.rightFStick, FStickMap.B2))
       Robot.lift.LiftUp(0.3);
-    else if(Robot.m_oi.getButtonPressed(Robot.m_oi.rightFStick,FStickMap.B3))
+    else if (Robot.m_oi.getButtonPressed(Robot.m_oi.rightFStick, FStickMap.B3))
       Robot.lift.LiftUp(-0.3);
-    else{
+    else {
       Robot.lift.LiftUp(0);
     }
-    if(Robot.m_oi.getTState(Robot.m_oi.rightFStick))
-      Robot.lift.shooting(0.3);
+    if (Robot.m_oi.getTState(Robot.m_oi.rightFStick))
+      Robot.lift.shooting(Robot.m_oi.getShootSpeed(Robot.m_oi.rightFStick, Robot.m_oi.RIGHT_FSTICK_DEADBAND));
     else
       Robot.lift.shooting(0);
-
+    if (Robot.m_oi.getButtonPressed(Robot.m_oi.rightFStick, FStickMap.B5)) {
+      Robot.lift.Witch(1.0);
+    }
+    else{
+      Robot.lift.Witch(0.0);
+    }
   }
 
   // Make this return true when this Command no longer needs to run execute()
