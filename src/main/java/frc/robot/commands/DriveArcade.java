@@ -47,7 +47,7 @@ public class DriveArcade extends Command {
     //Robot.oi.reverse 1 or -1
     Robot.drivetrain.driveArcade(
       multiplier * Robot.m_oi.getAxis(Robot.m_oi.leftFStick, FStickMap.YAXIS, Robot.m_oi.RIGHT_FSTICK_DEADBAND),
-      multiplier * Robot.m_oi.getAxis(Robot.m_oi.leftFStick, FStickMap.XAXIS, Robot.m_oi.LEFT_FSTICK_DEADBAND));
+      multiplier * Robot.m_oi.getAxis(Robot.m_oi.rightFStick, FStickMap.XAXIS, Robot.m_oi.LEFT_FSTICK_DEADBAND));
     
   }
 

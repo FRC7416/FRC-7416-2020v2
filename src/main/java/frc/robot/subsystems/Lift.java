@@ -6,10 +6,12 @@
 /*----------------------------------------------------------------------------*/
 
 package frc.robot.subsystems;
+
 import frc.robot.RobotMap;
 import frc.robot.commands.LiftAll;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * Add your docs here.
@@ -19,27 +21,30 @@ public class Lift extends Subsystem {
   // here. Call these from Commands.
   private VictorSP liftMotor = new VictorSP(RobotMap.LIFT_MOTOR);
   private VictorSP IntakeMotor = new VictorSP(RobotMap.INTAKE_MOTOR);
+  private VictorSP ShootMotor = new VictorSP(RobotMap.SHOOT_MOTOR);
   public boolean Running = false;
 
   public Lift(){
     liftMotor.setInverted(true);
     IntakeMotor.setInverted(false);
+    ShootMotor.setInverted(false);
   }
+  
   public void driveLift(double speed)
   {
     liftMotor.set(speed);
   }
 
-  public void LiftUp(){
-    liftMotor.set(0.6);
+  public void LiftUp(double speed){
+    liftMotor.set(speed);
   }
-
-  public void LiftDown(){
-    liftMotor.set(-0.6);
-  }
-
   public void intake(double speed){
     IntakeMotor.set(speed);
+    SmartDashboard.putBoolean("Running", Running);
+    
+  }
+  public void shooting(double speed){
+    ShootMotor.set(speed);
   }
   @Override
   public void initDefaultCommand() {

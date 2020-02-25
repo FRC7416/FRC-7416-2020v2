@@ -20,8 +20,8 @@ public class Drivetrain extends Subsystem {
 
     //one motor must be inverted for the robot to drive forward, as they are identical drive trains, one mounted "backwards"
     //switch these to switch which was is forward
-    leftMain.setInverted(false);
-    rightMain.setInverted(true);
+    leftMain.setInverted(true);
+    rightMain.setInverted(false);
   
   } 
 
