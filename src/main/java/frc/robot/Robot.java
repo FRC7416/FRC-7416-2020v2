@@ -7,11 +7,11 @@
 
 package frc.robot;
 
+import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.AutoPhase;
 import frc.robot.subsystems.*;
 import edu.wpi.first.wpilibj.Timer;
@@ -44,7 +44,7 @@ public class Robot extends TimedRobot {
     // set the AutoPhase command as the desired autonomous method we want to use
     m_chooser.setDefaultOption("Default Auto", new AutoPhase());
     // chooser.addOption("My Auto", new MyAutoCommand());
-    SmartDashboard.putData("Auto mode", m_chooser);
+    CameraServer.getInstance().startAutomaticCapture();
     
   }
   

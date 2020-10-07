@@ -12,8 +12,6 @@ import frc.robot.Robot;
 
 public class AutoPhase extends Command {
 
-  private boolean End = false;
-
   public AutoPhase() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
@@ -30,11 +28,29 @@ public class AutoPhase extends Command {
   // Use timer to divide time for different instruction during autonomous
   @Override
   protected void execute() {
-    if (frc.robot.Robot.time() < 3){
-      Robot.drivetrain.driveArcade(0.1,0);
+    if (frc.robot.Robot.time() < 2.5){
+      Robot.drivetrain.driveArcade(-0.5,0);
+  
+    }
+    else if(frc.robot.Robot.time() < 3)
+      Robot.drivetrain.driveArcade(0, 0.5);
+    else if(frc.robot.Robot.time()<3.5){
+      Robot.lift.shooting(0.5);
+      Robot.drivetrain.driveArcade(0, 0);
+    }
+    else if(frc.robot.Robot.time()<11.5){
+      Robot.lift.BallRoll(-0.6);
+      Robot.lift.shooting(0.5);
+    }
+    else if(frc.robot.Robot.time()<(12)){
+      Robot.drivetrain.driveArcade(1, 0);
+      Robot.lift.BallRoll(0);
+      Robot.lift.shooting(0);
     }
     else{
-      End = true;
+      Robot.drivetrain.driveArcade(0, 0);
+      Robot.lift.BallRoll(0);
+      Robot.lift.shooting(0);
     }
     
   }
@@ -42,9 +58,6 @@ public class AutoPhase extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    if(End){
-      return true;
-    }
     return false;
   }
   // Called once after isFinished returns true

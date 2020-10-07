@@ -33,25 +33,24 @@ public class DriveArcade extends Command {
 
     //Here we control the multipler for the speed, comparable to "gears" in a car.
     final double multiplier = Robot.m_oi.getMultiplier(
-      Robot.m_oi.getButtonPressed(Robot.m_oi.leftFStick, FStickMap.TRIGGER),
-      Robot.m_oi.getButtonPressed(Robot.m_oi.leftFStick, FStickMap.B1), 
-      Robot.m_oi.getButtonPressed(Robot.m_oi.leftFStick, FStickMap.B2),
-      Robot.m_oi.getButtonPressed(Robot.m_oi.leftFStick, FStickMap.B3));
+      Robot.m_oi.getButtonPressed(Robot.m_oi.leftFStick, FStickMap.B6),
+      Robot.m_oi.getButtonPressed(Robot.m_oi.leftFStick, FStickMap.B7), 
+      Robot.m_oi.getButtonPressed(Robot.m_oi.leftFStick, FStickMap.B8),
+      Robot.m_oi.getButtonPressed(Robot.m_oi.leftFStick, FStickMap.B9));
     
     //This should place the information onto smartdashboard, but it is not currently working for unknown reasons.
     SmartDashboard.putNumber("Speed Multiplier", multiplier);
     if(Robot.m_oi.getButtonReleased(Robot.m_oi.leftFStick,FStickMap.B10)){
       Robot.drivetrain.YDchange *= -1;
-      Robot.drivetrain.XDchange *= -1;
     }
 
     //Main drive function. This takes the axis inputs from our joysticks, and then mulitplies it by:
     //multiplier: the speed multiplier, .25, .5, .75, or 1
     //Robot.oi.reverse 1 or -1
-    Robot.drivetrain.driveArcade(
-      Robot.drivetrain.YDchange*multiplier * Robot.m_oi.getAxis(Robot.m_oi.leftFStick, FStickMap.YAXIS, Robot.m_oi.RIGHT_FSTICK_DEADBAND),
-      Robot.drivetrain.XDchange*multiplier * Robot.m_oi.getAxis(Robot.m_oi.rightFStick, FStickMap.XAXIS, Robot.m_oi.LEFT_FSTICK_DEADBAND));
-    
+
+      Robot.drivetrain.driveArcade(
+        Robot.drivetrain.YDchange*multiplier * Robot.m_oi.getAxis(Robot.m_oi.leftFStick, FStickMap.YAXIS, Robot.m_oi.RIGHT_FSTICK_DEADBAND),
+        Robot.drivetrain.XDchange*multiplier* Robot.m_oi.getAxis(Robot.m_oi.rightFStick, FStickMap.XAXIS, Robot.m_oi.LEFT_FSTICK_DEADBAND));
   }
 
    

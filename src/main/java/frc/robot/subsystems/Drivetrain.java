@@ -16,15 +16,15 @@ public class Drivetrain extends Subsystem {
   private VictorSP rightMain = new VictorSP(RobotMap.RIGHT_MAIN_MOTOR);
 
   public int YDchange = 1;
-  public int XDchange = -1;
+  public int XDchange = 1;
   
 
   public Drivetrain (){
 
     //one motor must be inverted for the robot to drive forward, as they are identical drive trains, one mounted "backwards"
     //switch these to switch which was is forward
-    leftMain.setInverted(true);
-    rightMain.setInverted(false);
+    leftMain.setInverted(false);
+    rightMain.setInverted(true);
   
   } 
 
@@ -50,7 +50,7 @@ public class Drivetrain extends Subsystem {
   public void drive(double left, double right)
   {
     //this method takes the numbers calculated from driveArcade and actually sets the values to the motors.
-    leftMain.set(left);
+    leftMain.set(left*0.8255814);
     
     rightMain.set(right);
     

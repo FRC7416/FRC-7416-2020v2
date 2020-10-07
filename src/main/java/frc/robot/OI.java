@@ -50,7 +50,7 @@ public class OI {
     /**
      * The left flight stick, another Logitech Extreme 3d Pro. 
      */
-    public Joystick leftFStick = new Joystick(0);
+    public Joystick leftFStick = new Joystick(2);
 
     //"default" deadband values
     //was set to driver preference for 2019 season. If controlers change or driver doesn't like the feel
@@ -143,7 +143,8 @@ public class OI {
     }
     public double getShootSpeed(Joystick fstick, double deadband){
         double SliderSpeed= getAxis(fstick, FStickMap.SLIDER, deadband);
-            return (SliderSpeed+1)*0.8*(-1)/2;
+            //return ((SliderSpeed+1)*(1))*0.45/2;
+              return ((SliderSpeed + 1) *1);
         }
     /**This method is used to change the speed multiplier for the robot.
      * <p>If more than one button is being held down, the highest one will override the rest.
