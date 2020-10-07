@@ -21,7 +21,7 @@ public class Lift extends Subsystem {
   private VictorSP liftMotor = new VictorSP(RobotMap.LIFT_MOTOR);
   private VictorSP IntakeMotor = new VictorSP(RobotMap.INTAKE_MOTOR);
   private VictorSP ShootMotor = new VictorSP(RobotMap.SHOOT_MOTOR);
-  private VictorSP WitchMotor = new VictorSP(RobotMap.WITCH_MOTOR);
+  private VictorSP WinchMotor = new VictorSP(RobotMap.WINCH_MOTOR);
   public boolean Running = false;
 
   public Lift(){
@@ -47,7 +47,7 @@ public class Lift extends Subsystem {
   }
 
   public void Witch(double speed){
-    WitchMotor.set(speed);
+    WinchMotor.set(speed);
   }
   @Override
   public void initDefaultCommand() {

@@ -52,10 +52,10 @@ public class LiftAll extends Command {
     else
       Robot.lift.shooting(0);
     if (Robot.m_oi.getButtonPressed(Robot.m_oi.rightFStick, FStickMap.B5)) {
-      Robot.lift.Witch(1.0);
+      Robot.lift.Winch(1.0);
     }
     else{
-      Robot.lift.Witch(0.0);
+      Robot.lift.Winch(0.0);
     }
   }
 

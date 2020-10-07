@@ -25,11 +25,11 @@ public class RobotMap {
   // public static int rangefinderModule = 1;
     //PWM ports for the Motor Controlors
   //PLEASE add more variables here instead of just assigning them numbers while calling them.
-  public static final int LEFT_MAIN_MOTOR = 0;
-  public static final int RIGHT_MAIN_MOTOR = 4;
-  public static final int LIFT_MOTOR = 7;
+  public static final int LEFT_MAIN_MOTOR = 8;
+  public static final int RIGHT_MAIN_MOTOR = 8;
+  public static final int LIFT_MOTOR = 6;
   public static final int INTAKE_MOTOR = 5;
-  public static final int SHOOT_MOTOR = 1;
-  public static final int WITCH_MOTOR = 3;
+  public static final int SHOOT_MOTOR = 0;
+  public static final int WINCH_MOTOR = 1;
 
 }
